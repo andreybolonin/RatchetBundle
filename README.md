@@ -3,9 +3,11 @@
 ### 0) Check, do you install high perfomance C event extension (libevent, libev)
 
 http://socketo.me/docs/deploy#evented-io-extensions
+
 https://github.com/reactphp/event-loop#exteventloop
 
 https://bitbucket.org/osmanov/pecl-event
+
 https://bitbucket.org/osmanov/pecl-ev
 
 | Connections	| stream_select | libevent
@@ -75,6 +77,10 @@ server {
 }
 ```
 
+http://nginx.org/en/docs/http/load_balancing.html
+
+http://nginx.org/en/docs/http/websocket.html
+
 ### 5) Define your Topic-class:
 
 ```sh
@@ -99,5 +105,7 @@ Send the `$topic->broadcast($event)` with `$this->broadcast($event)` for broadca
 ### 8) Benchmark
 
 wrk -t4 -c400 -d10s ws://127.0.0.1:8090
+
+### 9) Arch
 
 <img src="https://raw.githubusercontent.com/andreybolonin/RatchetMultiInstance/master/RatchetMultiInstance.png">
