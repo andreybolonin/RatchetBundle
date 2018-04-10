@@ -30,7 +30,7 @@ ratchet_bundle:
 
 ### 3) Run your nodes
 
-`bin/console server:run --host=127.0.0.1 --port=8095 `
+`bin/console server:run --host=127.0.0.1 --port=8095`
 
 `bin/console server:run --host=127.0.0.1 --port=8097`
 
@@ -88,8 +88,16 @@ server {
         lazy: true
 ```
 
-### 6) Inject `use RatchetMultiInstanceTrait;` into your Topic-class
+### 6) 
 
-### 7) Send the `$topic->broadcast($event)` with `$this->broadcast($event)` for broadcasting in another WampServer nodes
+Inject `use RatchetMultiInstanceTrait;` into your Topic-class
+
+### 7) 
+
+Send the `$topic->broadcast($event)` with `$this->broadcast($event)` for broadcasting in another WampServer nodes
+
+### 8) Benchmark
+
+wrk -t4 -c400 -d10s ws://127.0.0.1:8090
 
 <img src="https://raw.githubusercontent.com/andreybolonin/RatchetMultiInstance/master/RatchetMultiInstance.png">
