@@ -38,11 +38,11 @@ ratchet_bundle:
 
 ### 3) Run your nodes
 
-`bin/console server:run --host=127.0.0.1 --port=8095`
+`bin/console wamp:server:run --host=127.0.0.1 --port=8095`
 
-`bin/console server:run --host=127.0.0.1 --port=8097`
+`bin/console wamp:server:run --host=127.0.0.1 --port=8097`
 
-`bin/console server:run --host=127.0.0.1 --port=8099`
+`bin/console wamp:server:run --host=127.0.0.1 --port=8099`
 
 ### 4) Setup NGINX (as load balancer)
 
