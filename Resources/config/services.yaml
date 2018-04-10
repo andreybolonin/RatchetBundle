@@ -1,0 +1,19 @@
+services:
+
+    app.bidding_topic_service:
+        class: App\Topic\BiddingTopic
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+            $counter: '@app.service.counter'
+            $router: '@Symfony\Component\Routing\RouterInterface'
+        public: true
+        lazy: true
+
+    app.pdo_periodic_ping:
+        class: Andreybolonin\RatchetBundle\Periodic\PdoPeriodicPing
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@logger'
+        tags:
+            - { name: monolog.logger, channel: app }
+        public: true

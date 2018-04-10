@@ -1,0 +1,32 @@
+{
+    "name": "andreybolonin/ratchet-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Bolonin",
+            "email": "andreybolonin1989@gmail.com"
+        },
+        {
+            "name": "Igor Bondarenko",
+            "email": "igor3k.bondarenko@gmail.com"
+        }
+    ],
+    "description": "Ratchet Symfony bundle",
+    "autoload": {
+        "psr-4": {
+            "Andreybolonin\\RatchetBundle\\": ""
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "gos/websocket-client": "^0.1",
+        "cboden/ratchet": "^0.4",
+        "symfony/framework-bundle": "^4.0",
+        "doctrine/orm": "^2.6",
+        "ocramius/proxy-manager": "^2.2"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.9",
+        "friendsofphp/php-cs-fixer": "^2.11"
+    }
+}
