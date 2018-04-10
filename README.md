@@ -19,6 +19,10 @@ https://bitbucket.org/osmanov/pecl-ev
 
 https://www.pigo.idv.tw/archives/589
 
+`libevent` vs `libev`
+
+http://libev.schmorp.de/bench.html
+
 ### 1) Install
 
 `composer req andreybolonin/ratchet-bundle`
