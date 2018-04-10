@@ -23,7 +23,9 @@ https://www.pigo.idv.tw/archives/589
 
 `composer req andreybolonin/ratchet-bundle`
 
-### 2) Define your pool (config/services.yaml)
+### 2) Define your pool
+
+`config/services.yaml`
 
 ```sh
 ratchet_bundle:
@@ -94,17 +96,17 @@ http://nginx.org/en/docs/http/websocket.html
         lazy: true
 ```
 
-### 6) 
+### 6) Inject
 
-Inject `use RatchetMultiInstanceTrait;` into your Topic-class
+`use RatchetMultiInstanceTrait;` into your Topic-class
 
-### 7) 
+### 7) Send the 
 
-Send the `$topic->broadcast($event)` with `$this->broadcast($event)` for broadcasting in another WampServer nodes
+`$topic->broadcast($event)` with `$this->broadcast($event)` for broadcasting in another WampServer nodes
 
 ### 8) Benchmark
 
-wrk -t4 -c400 -d10s ws://127.0.0.1:8090
+`wrk -t4 -c400 -d10s ws://127.0.0.1:8090`
 
 ### 9) Arch
 
