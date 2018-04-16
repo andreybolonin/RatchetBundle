@@ -23,7 +23,6 @@
         "cboden/ratchet": "^0.4",
         "symfony/framework-bundle": "^4.0",
         "doctrine/orm": "^2.6",
-        "ocramius/proxy-manager": "^2.2",
         "phlib/console-process": "^1.0"
     },
     "require-dev": {

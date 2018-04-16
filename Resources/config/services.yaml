@@ -7,7 +7,6 @@ services:
             $counter: '@app.service.counter'
             $router: '@Symfony\Component\Routing\RouterInterface'
         public: true
-        lazy: true
 
     app.pdo_periodic_ping:
         class: Andreybolonin\RatchetBundle\Periodic\PdoPeriodicPing
@@ -17,3 +16,7 @@ services:
         tags:
             - { name: monolog.logger, channel: app }
         public: true
+
+    Andreybolonin\RatchetBundle\Command\WampServerRunCommand:
+        tags:
+            - { name: 'console.command', command: 'wamp:server:run' }
