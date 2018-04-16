@@ -4,7 +4,8 @@ namespace Andreybolonin\RatchetBundle\Command;
 
 use Andreybolonin\RatchetBundle\Periodic\PdoPeriodicPing;
 use Andreybolonin\RatchetBundle\Ratchet\App;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Phlib\ConsoleProcess\Command\DaemonCommand;
+use Ratchet\Wamp\WampServerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
@@ -15,8 +16,19 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 /**
  * Class WampServerRunCommand.
  */
-class WampServerRunCommand extends ContainerAwareCommand
+class WampServerRunCommand extends DaemonCommand
 {
+    private $biddingTopic;
+    private $pdoPeriodicPing;
+
+    public function __construct(WampServerInterface $biddingTopic, PdoPeriodicPing $pdoPeriodicPing)
+    {
+        $this->biddingTopic = $biddingTopic;
+        $this->pdoPeriodicPing = $pdoPeriodicPing;
+
+        parent::__construct();
+    }
+
     protected function configure()
     {
         $this
@@ -52,7 +64,7 @@ class WampServerRunCommand extends ContainerAwareCommand
 
         $loop = Factory::create();
         /** @var PdoPeriodicPing $pdoPeriodicPing */
-        $pdoPeriodicPing = $this->getContainer()->get('app.pdo_periodic_ping');
+        $pdoPeriodicPing = $this->pdoPeriodicPing;//getContainer()->get('app.pdo_periodic_ping');
 
         $loop->addPeriodicTimer($pdoPeriodicPing->getTimeout(), function () use ($pdoPeriodicPing) {
             $pdoPeriodicPing->tick();
@@ -68,13 +80,13 @@ class WampServerRunCommand extends ContainerAwareCommand
         /*putenv('websocketHost='.$websocketHost);
         putenv('websocketPort='.$websocketPort);*/
 
-        $biddingTopic = $this->getContainer()->get('app.bidding_topic_service');
+//        $biddingTopic = $this->getContainer()->get('app.bidding_topic_service');
 
         /*var_dump(getenv('websocketHost'));
         var_dump(getenv('websocketPort'));*/
 
         $server = new App($websocketHost, $websocketPort, '0.0.0.0', $loop);
-        $server->route('/', $biddingTopic, ['*']);
+        $server->route('/', $this->biddingTopic, ['*']);
 
         // TODO заменить т.к. сообщение не отображает реального факта запуска сервера командой
         $io->success(sprintf('Server listening on ws://%s', $websocketHost.':'.$websocketPort));
