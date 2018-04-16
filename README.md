@@ -29,7 +29,7 @@ http://libev.schmorp.de/bench.html
 
 ### 2) Define your pool
 
-`config/services.yaml`
+`config/packages/ratchet_bundle.yaml`
 
 ```sh
 ratchet_bundle:
