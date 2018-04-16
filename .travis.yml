@@ -10,5 +10,6 @@ install:
   - composer install
 
 script:
-  - vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no src/ --rules=@Symfony
+  - vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no Command/ --rules=@Symfony
+  - vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no App/ --rules=@Symfony
 #  - vendor/bin/phpstan analyse src/ --level=1
