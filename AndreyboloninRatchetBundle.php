@@ -2,6 +2,7 @@
 
 namespace Andreybolonin\RatchetBundle;
 
+use Andreybolonin\RatchetBundle\DependencyInjection\RatchetBundleExtension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,6 +16,11 @@ class AndreyboloninRatchetBundle extends Bundle
             $container,
             new FileLocator(__DIR__.'/../Resources/config')
         );
-        $loader->load('services.yaml');
+        $loader->load('ratchet_bundle.yaml');
+    }
+
+    public function getContainerExtension()
+    {
+        return new RatchetBundleExtension();
     }
 }

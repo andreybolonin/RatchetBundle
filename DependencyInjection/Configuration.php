@@ -14,8 +14,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->arrayNode('wampserver_pool')
-            ->children()
+                ->arrayNode('wampserver_pool')
+                    ->scalarPrototype()->end()
+                ->end()
             ->end()
         ;
 
