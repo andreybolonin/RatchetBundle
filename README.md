@@ -27,12 +27,16 @@ http://libev.schmorp.de/bench.html
 
 ### 1) Set ulimit
 
-add to /etc/security/limits.conf
+add to `/etc/security/limits.conf`
 
 ```sh
 *               soft    nofile          1000000
 *               hard    nofile          1000000
 ``` 
+
+relogin to your server and check
+
+`ulimit -n` should be `1000000`
 
 ### 2) Install
 
