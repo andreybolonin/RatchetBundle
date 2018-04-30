@@ -1,6 +1,6 @@
 # QuickStart
 
-### 0) Check, do you install high perfomance C event extension (libevent, libev)
+### 0) Check, do you install high perfomance C event extension (libevent, libev, libuv)
 
 http://socketo.me/docs/deploy#evented-io-extensions
 
@@ -9,6 +9,8 @@ https://github.com/reactphp/event-loop#exteventloop
 https://bitbucket.org/osmanov/pecl-event
 
 https://bitbucket.org/osmanov/pecl-ev
+
+https://github.com/bwoebi/php-uv
 
 | Connections	| stream_select | libevent
 | ------------- |:-------------:| -----:|
@@ -23,11 +25,20 @@ https://www.pigo.idv.tw/archives/589
 
 http://libev.schmorp.de/bench.html
 
-### 1) Install
+### 1) Set ulimit
+
+add to /etc/security/limits.conf
+
+```sh
+*               soft    nofile          1000000
+*               hard    nofile          1000000
+``` 
+
+### 2) Install
 
 `composer req andreybolonin/ratchet-bundle`
 
-### 2) Define your pool
+### 3) Define your pool
 
 `config/packages/ratchet_bundle.yaml`
 
@@ -36,7 +47,7 @@ ratchet_bundle:
     wampserver_pool: ['127.0.0.1:8095', '127.0.0.1:8097', '127.0.0.1:8099']
 ```
 
-### 3) Run your nodes
+### 4) Run your nodes
 
 `bin/console wamp:server:run --host=127.0.0.1 --port=8095`
 
@@ -44,7 +55,7 @@ ratchet_bundle:
 
 `bin/console wamp:server:run --host=127.0.0.1 --port=8099`
 
-### 4) Setup NGINX (as load balancer)
+### 5) Setup NGINX (as load balancer)
 
 ```sh
 upstream socket {
@@ -87,7 +98,7 @@ http://nginx.org/en/docs/http/load_balancing.html
 
 http://nginx.org/en/docs/http/websocket.html
 
-### 5) Define your Topic-class:
+### 6) Define your Topic-class:
 
 ```sh
     app.bidding_topic_service:
@@ -100,18 +111,18 @@ http://nginx.org/en/docs/http/websocket.html
         lazy: true
 ```
 
-### 6) Inject
+### 7) Inject
 
 `use RatchetMultiInstanceTrait;` into your Topic-class
 
-### 7) Send the 
+### 8) Send the 
 
 `$topic->broadcast($event)` with `$this->broadcast($event)` for broadcasting in another WampServer nodes
 
-### 8) Benchmark
+### 9) Benchmark
 
 `wrk -t4 -c400 -d10s ws://127.0.0.1:8090`
 
-### 9) Arch
+### 10) Arch
 
 <img src="https://raw.githubusercontent.com/andreybolonin/RatchetMultiInstance/master/RatchetMultiInstance.png">
