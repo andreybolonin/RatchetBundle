@@ -25,6 +25,10 @@ https://www.pigo.idv.tw/archives/589
 
 http://libev.schmorp.de/bench.html
 
+`libev` vs `libuv`
+
+https://gist.github.com/andreybolonin/2413da76f088e2c5ab04df53f07659ea
+
 ### 1) Set ulimit
 
 add to `/etc/security/limits.conf`
