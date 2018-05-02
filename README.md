@@ -34,6 +34,10 @@ add to `/etc/security/limits.conf`
 *               hard    nofile          1000000
 ``` 
 
+add to `/etc/sysctl.conf`
+
+`fs.file-max=1000000`
+
 relogin to your server and check
 
 `ulimit -n` should be `1000000`
