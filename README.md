@@ -69,6 +69,23 @@ ratchet_bundle:
 
 ### 5) Setup NGINX (as load balancer)
 
+`/etc/nginx/nginx.conf`
+
+```sh
+worker_processes        auto;
+worker_rlimit_nofile    49152;
+timer_resolution        100ms;
+worker_priority         -5;
+
+events {
+    use epoll;
+    worker_connections 24576;
+    multi_accept on;
+}
+```
+
+`/etc/nginx/sites-enabled/*`
+
 ```sh
 upstream socket {
     server 127.0.0.1:8095;
