@@ -153,9 +153,10 @@ http://nginx.org/en/docs/http/websocket.html
 `wrk -t4 -c400 -d10s ws://127.0.0.1:8090`
 
 1 node (828req/sec)
+
 2 node (4.410req/sec)
 
-<img src="https://raw.githubusercontent.com/andreybolonin/RatchetMultiInstance/master/bench.png">
+<img src="https://raw.githubusercontent.com/andreybolonin/RatchetBundle/master/bench.png">
 
 ### 10) Arch
 
