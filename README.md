@@ -403,4 +403,6 @@ class BiddingTopic implements WampServerInterface
 
 ### 10) Arch
 
+Is something differnt of https://nodejs.org/api/cluster.html#cluster_cluster
+
 <img src="https://raw.githubusercontent.com/andreybolonin/RatchetMultiInstance/master/RatchetMultiInstance.png">
