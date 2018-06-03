@@ -405,4 +405,6 @@ class BiddingTopic implements WampServerInterface
 
 Is something differnt of https://nodejs.org/api/cluster.html#cluster_cluster
 
+https://hackernoon.com/scaling-websockets-9a31497af051
+
 <img src="https://raw.githubusercontent.com/andreybolonin/RatchetMultiInstance/master/RatchetMultiInstance.png">
